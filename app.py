@@ -79,7 +79,7 @@ def cart():
         #TODO Hier API aufrufen und Modelldaten übergeben
         location = [20.33,43.22]
         modelparams = get_model_params(products, location)
-        response = requests.get(f'http://127.0.0.1:5000/predict/{modelparams}')
+        response = requests.get(f'https://fsis-modell-api.herokuapp.com/predict/FSIS202/{modelparams}')
         #DONE Ergebnis returnen und in html einbinden
         content = json.loads(response.text)
 
@@ -98,7 +98,7 @@ def cart():
 
             modelparams = get_model_params(products, location)
 
-            response = requests.get(f'http://127.0.0.1:5000/predict/{modelparams}')
+            response = requests.get(f'https://fsis-modell-api.herokuapp.com/predict/FSIS222/{modelparams}')    
             content = json.loads(response.text)
             return render_template("cart.html",products=products, eta=content)
 
