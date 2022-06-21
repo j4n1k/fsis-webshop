@@ -102,5 +102,5 @@ def cart():
             content = json.loads(response.text)
             return render_template("cart.html",products=products, eta=content)
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5001)
+# if __name__ == "__main__":
+#     app.run(host="0.0.0.0", port=5001)
