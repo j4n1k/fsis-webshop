@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %} Dashboard {% endblock %}
+{% block content %}
+
+{% if success %}
+        <p class=success><strong>Success:</strong> {{ success }}
+{% endif%}
+
+    <div class="flexbox">
+      <table id="product-table" class="table table-striped">
+          <thead>
+      <tr>
+          <th scope="col">Produkt</th>
+          <th scope="col">Beschreibung</th>
+          <th scope="col">Preis</th>
+          <th scope="col"></th>
+      </tr>
+          </thead>
+      {% for index, row in products.iterrows() %}
+      <tr>
+          <td>{{row['product_category_name']}}</td>
+          <td>{{row['product_description_lenght']}}</td>
+          <td>{{row['product_weight_g']}}</td>
+          <td>
+              <form action="/products" method="POST">
+              <input name="product-id" type="hidden" value="{{row['product_id']}}">
+              <input type="submit" value="Zu Warenkorb">
+              </form>
+          </td>
+      </tr>
+      {% endfor %}
+  </table>
+</div>    
+{% endblock %}
+
+{% block scripts %}
+<script>
+  $(document).ready( function () {
+  $('#product-table').DataTable();
+} );
+</script>
+{% endblock %}

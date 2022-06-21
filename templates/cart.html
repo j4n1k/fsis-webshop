@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %} Details {% endblock %}
+{% block content %}
+
+<div class="main-cards">
+    <div class="card" class="table table-striped">
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Preis</th>
+                </tr>
+                    </thead>
+                {% for i in products %}
+                <tr>
+                    <td>{{i['product_name']}}</td>
+                    <td>{{i['product_price']}}</td>
+                </tr>
+                {% endfor %}
+        </table>
+        <form action="/cart" method="POST">
+            <input type="submit" name="delete" value="Löschen">
+        </form>
+    </div>
+
+    <div class="card">
+          <div class="eta">ETA: {{eta}}</div>
+    </div>
+    <div class="card">
+        <form action="/cart" method="POST">
+            <input type="text" name="name" value="Name"> <br>
+            <input type="text" name="adress" value="Adresse"> <br><br>
+            <input type="submit" name="change" value="Daten aktualisieren">
+        </form>
+        
+        
+    </div>
+</div>    
+
+
+{% endblock %}
+
+        
+
+          
+          

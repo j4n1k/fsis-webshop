@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Example Web Shop{% endblock %}</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.css">
+</head>
+<body>
+      <div class="grid-container">
+        <header class="header">
+          <a class="nav-link active" aria-current="page" href="/">Example Shop</a>
+          <a class="nav-link active" aria-current="page" href="/home">Home</a>
+          <div class="right">
+          <a class="nav-link" href="/products">Produkte</a>
+          <a class="nav-link" href="/cart">Warenkorb</a>
+        </div>
+        </header>
+        <aside class="sidenav">
+          <ul class="sidenav_list">
+            <li class="sidenav_list-item">Platzhalter</li>
+            <li class="sidenav_list-item">Platzhalter</li>
+            <li class="sidenav_list-item">Platzhalter</li>
+          </ul>
+        </aside>
+        <main class="main">
+          {% block content %} {% endblock %}
+        </main>
+        <footer class="footer">
+          <div class="footer__copyright">&copy; 2022 Team ETA</div>
+          <div class="footer__signature">FSIS</div>
+        </footer>
+      </div>
+      <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+      <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.js"></script>
+      {% block scripts %}{% endblock %}
+</body>
+</html>
