@@ -1,4 +1,5 @@
 # fsis-webshop
-Simple app to simulate a e-commerce Webshop with a product list and cart. 
-Call to model api   
-https://fsis-webshop-example.herokuapp.com/
+Einfache Webanwendung zur Simulation eines Ecommerce Webshops im Rahmen des Moduls Fallstudie Informationssysteme.
+# Architektur  
+![Architektur](/static/architektur.png)
+Der Webshop ist unter dem folgenden Link zu erreichen https://fsis-webshop-example.herokuapp.com/
