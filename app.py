@@ -109,15 +109,17 @@ def products():
 def cart():
     if request.method == "GET":
         products = get_products()
-        
-        location = [8215,"SP","sao paulo"]
-        modelparams = get_model_params(products, location)
-        modelparams = json.dumps(modelparams)
-        response = requests.get(f'https://fsis-modell-api.herokuapp.com/predict/FSIS2022/{modelparams}')
-        #response = requests.get(f'http://127.0.0.1:5000/predict/FSIS2022/{modelparams}')
-        #DONE Ergebnis returnen und in html einbinden
-        content = json.loads(response.text)
-        return render_template("cart.html",products=products,eta=content)
+        if len(products) != 0:
+            location = [8215,"SP","sao paulo"]
+            modelparams = get_model_params(products, location)
+            modelparams = json.dumps(modelparams)
+            #response = requests.get(f'https://fsis-modell-api.herokuapp.com/predict/FSIS2022/{modelparams}')
+            response = requests.get(f'http://127.0.0.1:5000/predict/FSIS2022/{modelparams}')
+            #DONE Ergebnis returnen und in html einbinden
+            content = json.loads(response.text)
+            return render_template("cart.html",products=products,eta=content)
+        else:
+            return render_template("cart.html",products=products)
     else:
         if request.form.get("delete"):
             conn = get_db_connection()
@@ -129,11 +131,11 @@ def cart():
         elif request.form.get("change"):
             products = get_products()
             location = request.form.get("adress").split(",")
-            #28013, RJ, campos dos goytacazes
+            #28013,RJ,campos dos goytacazes
             modelparams = get_model_params(products, location)
             modelparams = json.dumps(modelparams)
-            response = requests.get(f'https://fsis-modell-api.herokuapp.com/predict/FSIS2022/{modelparams}')    
-            #response = requests.get(f'http://127.0.0.1:5000/predict/FSIS2022/{modelparams}')
+            #response = requests.get(f'https://fsis-modell-api.herokuapp.com/predict/FSIS2022/{modelparams}')    
+            response = requests.get(f'http://127.0.0.1:5000/predict/FSIS2022/{modelparams}')
             content = json.loads(response.text)
             return render_template("cart.html",products=products, eta=content)
 
